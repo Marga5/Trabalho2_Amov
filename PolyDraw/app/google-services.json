@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "24903729162",
+    "project_id": "amovtp2",
+    "storage_bucket": "amovtp2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24903729162:android:af4064a7f6834c6ab61ff3",
+        "android_client_info": {
+          "package_name": "com.example.polydraw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24903729162-nie9h524i2qnuee6r9g3p4b9aiha6htr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.polydraw",
+            "certificate_hash": "46045d43137cb252aecd0758ba4f53c66af3ec30"
+          }
+        },
+        {
+          "client_id": "24903729162-a0vrp9uvq595hvf8hji02o6tmcvbujb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJW-cu7JwJZ7UBjmA3sIDR6UMVJeT6Jyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24903729162-a0vrp9uvq595hvf8hji02o6tmcvbujb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
