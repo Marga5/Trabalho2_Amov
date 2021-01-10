@@ -22,9 +22,12 @@ class RegistarActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registar)
+
+
 
         intent.extras?.apply {
             for(k in keySet()) {
@@ -47,7 +50,7 @@ class RegistarActivity : AppCompatActivity() {
     }
 
     fun onCriarComEmail(view: View) {
-        val username = findViewById<EditText>(R.id.edUsername).text.toString()
+        val username = findViewById<EditText>(R.id.tfUser).text.toString()
         val email = findViewById<EditText>(R.id.edEmail).text.toString()
         val password = findViewById<EditText>(R.id.edPassword).text.toString()
 
@@ -104,4 +107,6 @@ class RegistarActivity : AppCompatActivity() {
                 }
             }
     }
+
+    fun onVoltar(view: View) {}
 }
