@@ -51,8 +51,8 @@ class RegistarActivity : AppCompatActivity() {
 
     fun onCriarComEmail(view: View) {
         val username = findViewById<EditText>(R.id.tfUser).text.toString()
-        val email = findViewById<EditText>(R.id.edEmail).text.toString()
-        val password = findViewById<EditText>(R.id.edPassword).text.toString()
+        val email = findViewById<EditText>(R.id.tfEmail).text.toString()
+        val password = findViewById<EditText>(R.id.tfPass).text.toString()
 
         createUserWithEmail(username,email,password)
 
@@ -108,5 +108,8 @@ class RegistarActivity : AppCompatActivity() {
             }
     }
 
-    fun onVoltar(view: View) {}
+    fun onVoltar(view: View) {
+        val intent = Intent (this, LoginActivity::class.java)
+        startActivity(intent)
+    }
 }

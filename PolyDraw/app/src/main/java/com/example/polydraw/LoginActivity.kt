@@ -1,11 +1,17 @@
 package com.example.polydraw
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -23,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    lateinit var tvLog : TextView
+    //lateinit var tvLog : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +41,23 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        tvLog = findViewById(R.id.tvLog)
+        //Criar botão no textView
+        var textView : TextView  = findViewById(R.id.tvSignUp)
+        val text : String = "Don't have an account? Sign up here"
+        val spannableString = SpannableString(text)
+
+        val clickableSpan : ClickableSpan = object : ClickableSpan(){
+            override fun onClick(widget: View) {
+                onRegisto()
+            }
+        }
+        spannableString.setSpan(clickableSpan, 23,35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        textView.setText(spannableString)
+        textView.setMovementMethod(LinkMovementMethod.getInstance())
+
+        //--------------------------
+
+        //tvLog = findViewById(R.id.tvLog)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -56,8 +78,8 @@ class LoginActivity : AppCompatActivity() {
         } else {
             "User: ${user.email}"
         }
-        Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
-        tvLog.text = str
+        //Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
+        //tvLog.text = str
     }
 
     fun signInWithEmail(email:String,password:String) {
@@ -74,11 +96,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onLoginMail(view: View) {
-        val email = findViewById<EditText>(R.id.edEmail).text.toString()
-        val pass = findViewById<EditText>(R.id.edPassword).text.toString()
+        val email = findViewById<EditText>(R.id.tfEmail).text.toString()
+        val pass = findViewById<EditText>(R.id.tfPass).text.toString()
 
 
         signInWithEmail(email, pass)
+    }
+
+    fun onRegisto(){
+        val intent = Intent (this, RegistarActivity::class.java)
+        startActivity(intent)
     }
 
 
