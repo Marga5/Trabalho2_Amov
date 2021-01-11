@@ -36,7 +36,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfEmail"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_mail_black_24dp"
@@ -49,6 +49,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
@@ -58,7 +59,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfPass"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_https_black_24dp"
@@ -72,6 +73,7 @@
 
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tfPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -118,6 +120,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="55dp"
         android:clickable="true"
+        />
+
+    <TextView
+        android:id="@+id/tvLog"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
 

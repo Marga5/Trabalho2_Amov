@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    //lateinit var tvLog : TextView
+    lateinit var tvLog : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
         //--------------------------
 
-        //tvLog = findViewById(R.id.tvLog)
+        tvLog = findViewById(R.id.tvLog)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -78,11 +78,11 @@ class LoginActivity : AppCompatActivity() {
         } else {
             "User: ${user.email}"
         }
-        //Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
-        //tvLog.text = str
+        Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
+        tvLog.text = str
     }
 
-    fun signInWithEmail(email:String,password:String) {
+    fun signInWithEmail(email:String, password:String) {
         auth.signInWithEmailAndPassword(email,  password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -98,7 +98,6 @@ class LoginActivity : AppCompatActivity() {
     fun onLoginMail(view: View) {
         val email = findViewById<EditText>(R.id.tfEmail).text.toString()
         val pass = findViewById<EditText>(R.id.tfPass).text.toString()
-
 
         signInWithEmail(email, pass)
     }
