@@ -82,24 +82,34 @@ class LoginActivity : AppCompatActivity() {
         tvLog.text = str
     }
 
-    fun signInWithEmail(email:String, password:String) {
+    fun signInWithEmail(email:String, password:String): Int {
+        var sucess = 0
         auth.signInWithEmailAndPassword(email,  password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "signInWithEmail: success")
+                        sucess = 1
                         showUser(auth.currentUser)
                     } else {
                         Log.d(TAG, "signInWithEmail: failure")
                         showUser(null)
+                        sucess = 1
                     }
                 }
+
+        return sucess
     }
 
     fun onLoginMail(view: View) {
         val email = findViewById<EditText>(R.id.tfEmail).text.toString()
         val pass = findViewById<EditText>(R.id.tfPass).text.toString()
 
-        signInWithEmail(email, pass)
+       var sucess = signInWithEmail(email, pass)
+        if(sucess == 1) {
+            finish()
+            loginSucess()
+        }
+
     }
 
     fun onRegisto(){
@@ -114,8 +124,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onAutenticarGmail(view: View) {
-        signInWithGoogle()
+        var sucess = signInWithGoogle()
         showUser(auth.currentUser)
+
+        finish()
+        loginSucess()
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -131,5 +144,10 @@ class LoginActivity : AppCompatActivity() {
                         showUser(auth.currentUser)
                     }
                 }
+    }
+
+    fun loginSucess(){
+        val intent = Intent (this, MenuActivity::class.java)
+        startActivity(intent)
     }
 }
