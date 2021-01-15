@@ -109,7 +109,6 @@ class RegistarActivity : AppCompatActivity() {
     }
 
     fun onVoltar(view: View) {
-        val intent = Intent (this, LoginActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 }

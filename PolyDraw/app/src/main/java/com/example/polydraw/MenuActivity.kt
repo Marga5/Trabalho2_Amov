@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -16,28 +18,41 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    //lateinit var tvLog : TextView
+    lateinit var tvLog : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        //Para testar se user está com login
-        //tvLog = findViewById(R.id.tvLog)
-        //auth = Firebase.auth
 
-        //showUser(auth.currentUser)
+        auth = Firebase.auth
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+        googleSignInClient = GoogleSignIn.getClient(this,gso)
+
+        //Para testar se user está com login
+        tvLog = findViewById(R.id.tvLog)
+
+
+        showUser(auth.currentUser)
 
         //--------------------
     }
 
     fun onStart(view: View) {}
     fun onProfile(view: View) {}
-    fun onAbout(view: View) {}
+
+
+    fun onAbout(view: View) {
+        val intent = Intent (this, SobreActivity::class.java)
+        startActivity(intent)
+    }
 
 
     fun onLogout(view: View) {
-        if(auth.currentUser == null && googleSignInClient != null)
+        if(auth.currentUser == null)
             googleSignInClient.signOut()
                 .addOnCompleteListener(this) {
                     //showUser(null)
@@ -63,18 +78,8 @@ class MenuActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
     //Para testar se user está com login
-    /*fun showUser(user : FirebaseUser?) {
+    fun showUser(user : FirebaseUser?) {
         val str = if (user==null) {
             "No authenticated user"
         } else {
@@ -82,5 +87,5 @@ class MenuActivity : AppCompatActivity() {
         }
         Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
         tvLog.text = str
-    }*/
+    }
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity"
+    android:orientation="vertical"
+    android:background="@drawable/mapa_land">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onLogout"
+        android:src="@drawable/ic_login_black_24dp"
+        android:rotation="180"
+        android:background="@android:color/transparent"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/imprint_mt_shadow"
+        android:text="POLY"
+        android:textSize="70sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DRAW"
+        android:layout_gravity="center"
+        android:fontFamily="@font/imprint_mt_shadow"
+        android:textSize="70sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="55dp">
+
+
+    <Button
+        style="@style/Theme.PolyDraw.Buttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:onClick="onStart"
+        android:text="Start"
+        android:layout_marginRight="15dp"
+        app:icon="@drawable/ic_play_arrow_black_24dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onProfile"
+        android:text="Profile"
+        android:background="@drawable/rounded_edittext"
+        style="@style/Theme.PolyDraw.Buttom"
+        app:icon="@drawable/ic_person_black_24dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onAbout"
+        android:text="About"
+        android:background="@drawable/rounded_edittext"
+        style="@style/Theme.PolyDraw.Buttom"
+        app:icon="@drawable/ic_menu_book_black_24dp"
+        android:layout_marginLeft="15dp"
+        />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvLog"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

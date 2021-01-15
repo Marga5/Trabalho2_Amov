@@ -15,6 +15,7 @@ import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -63,9 +64,12 @@ class LoginActivity : AppCompatActivity() {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
+
+
         googleSignInClient = GoogleSignIn.getClient(this,gso)
 
         auth = Firebase.auth
+
     }
 
     override fun onStart() {
@@ -82,32 +86,31 @@ class LoginActivity : AppCompatActivity() {
         tvLog.text = str
     }
 
-    fun signInWithEmail(email:String, password:String): Int {
-        var sucess = 0
+    fun signInWithEmail(email:String, password:String){
         auth.signInWithEmailAndPassword(email,  password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "signInWithEmail: success")
-                        sucess = 1
                         showUser(auth.currentUser)
+                        loginSucess()
                     } else {
                         Log.d(TAG, "signInWithEmail: failure")
                         showUser(null)
-                        sucess = 1
                     }
                 }
 
-        return sucess
     }
 
     fun onLoginMail(view: View) {
         val email = findViewById<EditText>(R.id.tfEmail).text.toString()
         val pass = findViewById<EditText>(R.id.tfPass).text.toString()
 
-       var sucess = signInWithEmail(email, pass)
-        if(sucess == 1) {
-            finish()
-            loginSucess()
+        if(email.length==0 || pass.length == 0) {
+            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            signInWithEmail(email, pass)
+
         }
 
     }
@@ -124,11 +127,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onAutenticarGmail(view: View) {
-        var sucess = signInWithGoogle()
-        showUser(auth.currentUser)
+        signInWithGoogle()
 
-        finish()
-        loginSucess()
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -139,15 +139,35 @@ class LoginActivity : AppCompatActivity() {
                         Log.d(TAG, "signInWithCredential:success")
                         showUser(auth.currentUser)
                         Log.i(TAG, "firebaseAuthWithGoogle: ${auth.currentUser?.displayName}")
+                        loginSucess()
                     } else {
                         Log.d(TAG, "signInWithCredential:failure")
                         showUser(auth.currentUser)
                     }
                 }
+
     }
 
     fun loginSucess(){
         val intent = Intent (this, MenuActivity::class.java)
         startActivity(intent)
+        finish()
+    }
+
+
+    override fun onActivityResult(requestCode: Int,
+                                  resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1234) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Log.i(TAG, "onActivityResult - Google authentication: failure")
+            }
+        }
     }
 }
