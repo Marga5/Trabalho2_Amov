@@ -5,20 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class EntrarActivity : AppCompatActivity() {
+class CriarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_entrar)
+        setContentView(R.layout.activity_criar)
     }
 
     fun onVoltar(view: View) {
         finish()
     }
-    fun onCriar(view: View) {
-        val intent = Intent (this, CriarActivity::class.java)
-        startActivity(intent)
-    }
-    fun onJuntar(view: View) {
 
+    fun onCriar(view: View) {
+        val intent = Intent (this, EsperaActivity::class.java)
+        startActivity(intent)
     }
 }
