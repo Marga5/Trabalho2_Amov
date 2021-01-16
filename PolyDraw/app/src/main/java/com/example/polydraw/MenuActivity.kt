@@ -45,7 +45,10 @@ class MenuActivity : AppCompatActivity() {
         val intent = Intent (this, EntrarActivity::class.java)
         startActivity(intent)
     }
-    fun onProfile(view: View) {}
+    fun onProfile(view: View) {
+        val intent = Intent (this, PerfilActivity::class.java)
+        startActivity(intent)
+    }
 
 
     fun onAbout(view: View) {

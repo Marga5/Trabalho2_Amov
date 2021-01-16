@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".PerfilActivity">
+    tools:context=".PerfilActivity"
+    android:orientation="vertical"
+    android:background="@drawable/mapa">
 
-    <TextView
-        android:id="@+id/Perfil"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Perfil">
+        android:onClick="onVoltar"
+        android:src="@drawable/ic_keyboard_backspace_black_24dp"
+        android:background="@android:color/transparent"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
 
-    </TextView>
 
 </LinearLayout>
