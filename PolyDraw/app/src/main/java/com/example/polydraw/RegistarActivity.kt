@@ -54,15 +54,16 @@ class RegistarActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.tfEmail).text.toString()
         val password = findViewById<EditText>(R.id.tfPass).text.toString()
 
-        createUserWithEmail(username,email,password)
+        createUserWithEmail(email,password)
 
     }
 
-    private fun createUserWithEmail(username: String, email: String, password: String) {
+    private fun createUserWithEmail(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.i(TAG, "createUser: success")
+                    finish()
                 } else {
                     Log.i(TAG, "createUser: failure")
                 }
@@ -101,6 +102,7 @@ class RegistarActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     //showUser(auth.currentUser)
                     Log.i(TAG, "firebaseAuthWithGoogle: ${auth.currentUser?.displayName}")
+                    finish()
                 } else {
                     Log.d(TAG, "signInWithCredential:failure")
                    //showUser(auth.currentUser)
