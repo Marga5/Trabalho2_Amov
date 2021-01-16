@@ -56,8 +56,6 @@ class RegistarActivity : AppCompatActivity() {
 
         createUserWithEmail(email,password)
 
-        finish();
-
     }
 
     private fun createUserWithEmail(email: String, password: String) {
