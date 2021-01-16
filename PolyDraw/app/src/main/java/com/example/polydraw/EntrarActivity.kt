@@ -13,6 +13,10 @@ class EntrarActivity : AppCompatActivity() {
     fun onVoltar(view: View) {
         finish()
     }
-    fun onCriar(view: View) {}
-    fun onJuntar(view: View) {}
+    fun onCriar(view: View) {
+
+    }
+    fun onJuntar(view: View) {
+
+    }
 }

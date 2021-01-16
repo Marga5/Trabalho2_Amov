@@ -18,15 +18,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 
 
-private const val TAG:String = "Maps"
+private const val TAG: String = "Maps"
 
 class GameActivity : AppCompatActivity(), OnMapReadyCallback,
-    OnMyLocationButtonClickListener,
-    OnMyLocationClickListener,
-    OnRequestPermissionsResultCallback
-{
+        OnMyLocationButtonClickListener,
+        OnMyLocationClickListener,
+        OnRequestPermissionsResultCallback {
     private lateinit var map: GoogleMap
-    private val  REQUEST_CODE:Int = 1001
+    private val REQUEST_CODE: Int = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +36,7 @@ class GameActivity : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
 
     }
+
 
 
     @SuppressLint("MissingPermission")
@@ -51,8 +51,6 @@ class GameActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
 
-
-
     override fun onMyLocationButtonClick(): Boolean {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show()
         // Return false so that we don't consume the event and the default behavior still occurs
@@ -65,45 +63,34 @@ class GameActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
 
-
-
-
-
-    fun enableMyLocation(){
+    fun enableMyLocation() {
         when {
             ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED-> {
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
                 Log.d(TAG, "Permission Granted")
                 map.isMyLocationEnabled = true
-            }
-            shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) -> {
-            // In an educational UI, explain to the user why your app requires this
-            // permission for a specific feature to behave as expected. In this UI,
-            // include a "cancel" or "no thanks" button that allows the user to
-            // continue using your app without granting the permission.
-            Log.d(TAG, "shouldShowRequestPermissionRationale:True")
             }
             else -> {
                 // You can directly ask for the permission.
                 Log.d(TAG, "Request Permissions")
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_CODE)
+                        REQUEST_CODE)
             }
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray){
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
             REQUEST_CODE -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() &&
-                            grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                                grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     // Permission is granted. Continue the action or workflow
                     // in your app.
                     Log.d(TAG, "Permission granted")
