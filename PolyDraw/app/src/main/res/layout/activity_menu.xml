@@ -73,12 +73,4 @@
         app:icon="@drawable/ic_menu_book_black_24dp"
         />
 
-
-    <TextView
-        android:id="@+id/tvLog"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
 </LinearLayout>

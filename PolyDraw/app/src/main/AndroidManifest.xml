@@ -15,16 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PolyDraw">
-        <activity android:name=".GameActivity"/>
+        <activity android:name=".GameActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".EntrarActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".RegistarActivity" />
         <activity android:name=".SobreActivity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".PerfilActivity" />
 
@@ -37,8 +39,4 @@
 
 
     </application>
-
-
-
-
 </manifest>
