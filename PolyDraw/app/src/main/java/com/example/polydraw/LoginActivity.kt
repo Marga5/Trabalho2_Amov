@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //Criar botão no textView
-        var textView : TextView  = findViewById(R.id.tvSignUp)
+        val textView : TextView  = findViewById(R.id.tvSignUp)//findViewById(R.id.tvSignUp)
         val text : String = "Don't have an account? Sign up here"
         val spannableString = SpannableString(text)
 

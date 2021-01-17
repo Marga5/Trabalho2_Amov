@@ -3,6 +3,7 @@ package com.example.polydraw
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import java.io.PrintStream
 import java.net.Socket
 import kotlin.concurrent.thread
 
@@ -18,7 +19,7 @@ class JuntaEquipaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_junta_equipa)
 
-        startClient("")
+        startClient("10.0.2.16")
     }
 
 
@@ -26,13 +27,32 @@ class JuntaEquipaActivity : AppCompatActivity() {
     private fun startClient(serverIP: String, serverPort: Int = SERVER_PORT) {
         if (socket != null)
             return
+
+
         thread {
             try {
                 val newsocket = Socket(serverIP, serverPort)
-                Log.d(TAG, "Socket created")
-                newsocket.getOutputStream().bufferedWriter().write("Mensagem")
-            } catch (_: Exception) {
-                Log.d(TAG,"Erro a iniciar cliente")
+                Log.d(TAG,"Socket created")
+            } catch (e: Exception) {
+                Log.d(TAG, "Error creating socket")
+                e.printStackTrace()
+            }
+        }
+
+
+
+        socket?.getOutputStream()?.run {
+            thread {
+                try {
+                    val printStream = PrintStream(this)
+                    printStream.println("Mensagem")
+                    printStream.flush()
+
+                } catch (e: Exception) {
+                    Log.d(TAG, "Error init socket")
+                    Log.d(TAG, e.stackTrace.toString())
+
+                }
             }
         }
     }

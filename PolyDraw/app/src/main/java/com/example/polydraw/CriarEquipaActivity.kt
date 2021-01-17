@@ -1,9 +1,13 @@
 package com.example.polydraw
 
+import android.content.Intent
 import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.TextureView
+import android.view.View
+import android.widget.TextView
 import java.net.ServerSocket
 import java.net.Socket
 import kotlin.concurrent.thread
@@ -23,19 +27,41 @@ class CriarEquipaActivity : AppCompatActivity() {
 
 
         startServer()
+        var ip = getIP()
+        var tvip: TextView = findViewById(R.id.tvIP)
+        tvip.text = ip
 
-        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-        val ip = wifiManager.connectionInfo.ipAddress
-        val strIPAddress = String.format("%d.%d.%d.%d",
-                ip and 0xff,
-                (ip shr 8) and 0xff,
-                (ip shr 16) and 0xff,
-                (ip shr 24) and 0xff
-        )
 
-        Log.d(TAG, strIPAddress)
     }
 
+
+
+    fun onCriar(view: View) {
+        val intent = Intent (this, EsperaActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    fun onVoltar(view: View) {
+        finish()
+    }
+
+
+
+
+
+
+    private fun getIP():String{
+        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        val ip = wifiManager.connectionInfo.ipAddress
+
+        return String.format("%d.%d.%d.%d",
+            ip and 0xff,
+            (ip shr 8) and 0xff,
+            (ip shr 16) and 0xff,
+            (ip shr 24) and 0xff
+        )
+    }
 
     private fun startServer(){
 
