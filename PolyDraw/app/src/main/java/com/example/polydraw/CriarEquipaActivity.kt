@@ -9,6 +9,7 @@ import android.view.TextureView
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.example.polydraw.connection.Server
 import com.google.firebase.firestore.FirebaseFirestore
 import java.net.ServerSocket
 import java.net.Socket
@@ -19,9 +20,7 @@ private const val SERVER_PORT = 8000
 
 class CriarEquipaActivity : AppCompatActivity() {
 
-    private var serverSocket:ServerSocket? = null
-
-    private lateinit var threads:ArrayList<Thread>
+    var server: Server = Server()
 
     lateinit var etNomeEquipa : EditText
 
@@ -33,11 +32,15 @@ class CriarEquipaActivity : AppCompatActivity() {
 
         CriarFS()
 
+        server.startServer()
 
-        startServer()
-        var ip = getIP()
+        var ip = server.getIP(this)
         var tvip: TextView = findViewById(R.id.tvIP)
-        tvip.text = ip
+        tvip.text = ip.toString()
+
+
+        Log.d(TAG, server.getServerSocker()?.localPort.toString())
+
 
 
     }
@@ -62,7 +65,7 @@ class CriarEquipaActivity : AppCompatActivity() {
         db.collection("Equipa").document("RvxuZ2VFhlpyjlTEESO6").set(equipa)
     }
 
-    fun atualizarFS(){
+    private fun atualizarFS(){
         val db = FirebaseFirestore.getInstance()
 
         val equipa = db.collection("Equipa").document("RvxuZ2VFhlpyjlTEESO6")
@@ -86,48 +89,7 @@ class CriarEquipaActivity : AppCompatActivity() {
 
 
 
-    private fun getIP():String{
-        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-        val ip = wifiManager.connectionInfo.ipAddress
 
-        return String.format("%d.%d.%d.%d",
-            ip and 0xff,
-            (ip shr 8) and 0xff,
-            (ip shr 16) and 0xff,
-            (ip shr 24) and 0xff
-        )
-    }
-
-    private fun startServer(){
-
-        thread {
-            serverSocket = ServerSocket(SERVER_PORT)
-            Log.d(TAG, "Socket created")
-            serverSocket?.apply {
-                try {
-                    connectSocket(serverSocket!!.accept())
-                } catch (_: Exception) {
-                    Log.d(TAG, "Error accepting conection")
-                    //connectionState.postValue(ConnectionState.CONNECTION_ERROR)
-                } finally {
-                    serverSocket?.close()
-                    serverSocket = null
-                    Log.d(TAG, "Socket closed")
-                }
-            }
-        }
-    }
-
-    private fun connectSocket(socket: Socket?) {
-        socket ?: return
-
-        threads.add(thread {
-
-            val message = socket.getInputStream().bufferedReader().readLine()
-            Log.d(TAG, message)
-
-         })
-    }
 
 
 }
