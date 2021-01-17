@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilActivity"
+    android:orientation="vertical"
+    android:background="@drawable/mapa">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onVoltar"
+        android:src="@drawable/ic_keyboard_backspace_black_24dp"
+        android:background="@android:color/transparent"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvEmail"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tvLog"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvUsername"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvNgames"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/tvNJogos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvWin"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/tvVitorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
