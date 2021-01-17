@@ -10,9 +10,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -21,13 +24,13 @@ private const val TAG = "RegistarActivity"
 class RegistarActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    lateinit var tfUser : TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registar)
 
-
+        tfUser = findViewById(R.id.tfUser)
 
         intent.extras?.apply {
             for(k in keySet()) {
@@ -42,6 +45,8 @@ class RegistarActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this,gso)
 
         auth = Firebase.auth
+
+        CriarFS()
 
     }
 
@@ -63,6 +68,7 @@ class RegistarActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.i(TAG, "createUser: success")
+                    atualizarFS()
                     finish()
                 } else {
                     Log.i(TAG, "createUser: failure")
@@ -102,6 +108,7 @@ class RegistarActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     //showUser(auth.currentUser)
                     Log.i(TAG, "firebaseAuthWithGoogle: ${auth.currentUser?.displayName}")
+                    atualizarFS()
                     finish()
                 } else {
                     Log.d(TAG, "signInWithCredential:failure")
@@ -112,5 +119,29 @@ class RegistarActivity : AppCompatActivity() {
 
     fun onVoltar(view: View) {
         finish()
+    }
+
+    fun CriarFS() {
+        val db = Firebase.firestore
+
+        val user = hashMapOf(
+            "id" to 0,
+            "Username" to " "
+        )
+        db.collection("Username").document("vvPENlC0vqzF4geY26UV").set(user)
+    }
+
+    fun atualizarFS(){
+        val db = Firebase.firestore
+
+        val username = db.collection("Username").document("vvPENlC0vqzF4geY26UV")
+
+        db.runTransaction{ transition ->
+            val doc = transition.get(username)
+            val userName = tfUser
+
+            transition.update(username, "Nome", userName)
+
+        }
     }
 }
