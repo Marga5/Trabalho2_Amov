@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.TextureView
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.firestore.FirebaseFirestore
 import java.net.ServerSocket
 import java.net.Socket
 import kotlin.concurrent.thread
@@ -21,9 +23,15 @@ class CriarEquipaActivity : AppCompatActivity() {
 
     private lateinit var threads:ArrayList<Thread>
 
+    lateinit var etNomeEquipa : EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_criar_equipa)
+
+        etNomeEquipa = findViewById(R.id.etEquipa)
+
+        CriarFS()
 
 
         startServer()
@@ -37,8 +45,35 @@ class CriarEquipaActivity : AppCompatActivity() {
 
 
     fun onCriar(view: View) {
+        atualizarFS()
         val intent = Intent (this, EsperaActivity::class.java)
         startActivity(intent)
+    }
+
+
+    fun CriarFS() {
+        val db = FirebaseFirestore.getInstance()
+
+        val equipa = hashMapOf(
+                "IP" to 0,
+                "Membros" to 0,
+                "Nome" to "xpto"
+        )
+        db.collection("Equipa").document("RvxuZ2VFhlpyjlTEESO6").set(equipa)
+    }
+
+    fun atualizarFS(){
+        val db = FirebaseFirestore.getInstance()
+
+        val equipa = db.collection("Equipa").document("RvxuZ2VFhlpyjlTEESO6")
+
+        db.runTransaction{ transition ->
+            val doc = transition.get(equipa)
+            val nomeEquipa = etNomeEquipa
+
+            transition.update(equipa, "Nome", nomeEquipa)
+
+        }
     }
 
 

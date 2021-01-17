@@ -1,8 +1,11 @@
 package com.example.polydraw
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.EditText
 import java.io.PrintStream
 import java.net.Socket
 import kotlin.concurrent.thread
@@ -13,13 +16,14 @@ private const val SERVER_PORT = 8000
 
 class JuntaEquipaActivity : AppCompatActivity() {
 
+    lateinit var etIp : EditText
     private var socket: Socket? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_junta_equipa)
 
-        startClient("10.0.2.16")
+        etIp = findViewById(R.id.etIp)
     }
 
 
@@ -55,5 +59,18 @@ class JuntaEquipaActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun onVoltar(view: View)
+    {
+        finish()
+    }
+
+    fun onJuntar(view: View) {
+        var ip = etIp.text
+        startClient(ip.toString())
+
+        val intent = Intent (this, EsperaActivity::class.java)
+        startActivity(intent)
     }
 }
