@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PolyDraw">
         <activity android:name=".JuntaEquipaActivity" />
-        <activity android:name=".CriarEquipaActivity" />
+        <activity android:name=".CriarActivity" />
         <activity android:name=".EsperaActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".EntrarActivity" />
