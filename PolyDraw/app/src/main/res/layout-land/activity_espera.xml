@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EsperaActivity"
-    android:background="@drawable/mapa"
+    android:background="@drawable/mapa_land"
     android:orientation="vertical">
 
     <ImageButton
