@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PerfilActivity"
     android:orientation="vertical"
-    android:background="@drawable/mapa">
+    android:background="@drawable/mapa_land">
 
     <ImageButton
         android:layout_width="wrap_content"
