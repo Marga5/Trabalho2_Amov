@@ -106,13 +106,11 @@ class RegistarActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    //showUser(auth.currentUser)
                     Log.i(TAG, "firebaseAuthWithGoogle: ${auth.currentUser?.displayName}")
                     atualizarFS()
                     finish()
                 } else {
                     Log.d(TAG, "signInWithCredential:failure")
-                   //showUser(auth.currentUser)
                 }
             }
     }

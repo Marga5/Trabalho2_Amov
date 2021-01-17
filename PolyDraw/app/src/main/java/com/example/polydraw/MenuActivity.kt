@@ -19,7 +19,6 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -39,23 +38,21 @@ class MenuActivity : AppCompatActivity() {
         val intent = Intent (this, EntrarActivity::class.java)
         startActivity(intent)
     }
+
     fun onProfile(view: View) {
         val intent = Intent (this, PerfilActivity::class.java)
         startActivity(intent)
     }
-
 
     fun onAbout(view: View) {
         val intent = Intent (this, SobreActivity::class.java)
         startActivity(intent)
     }
 
-
     fun onLogout(view: View) {
         if(auth.currentUser == null)
             googleSignInClient.signOut()
                 .addOnCompleteListener(this) {
-                    //showUser(null)
                 }
         else
             signOut()
@@ -68,15 +65,11 @@ class MenuActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             auth.signOut()
         }
-        //showUser(auth.currentUser)
     }
 
     fun onLogin(){
         val intent = Intent (this, LoginActivity::class.java)
         startActivity(intent)
     }
-
-
-
 
 }

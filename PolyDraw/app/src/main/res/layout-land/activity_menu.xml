@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_edittext"
         android:onClick="onStart"
-        android:text="Start"
+        android:text="@string/btStart"
         android:layout_marginRight="15dp"
         app:icon="@drawable/ic_play_arrow_black_24dp" />
 
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onProfile"
-        android:text="Profile"
+        android:text="@string/btPerfil"
         android:background="@drawable/rounded_edittext"
         style="@style/Theme.PolyDraw.Buttom"
         app:icon="@drawable/ic_person_black_24dp"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onAbout"
-        android:text="About"
+        android:text="@string/btAbout"
         android:background="@drawable/rounded_edittext"
         style="@style/Theme.PolyDraw.Buttom"
         app:icon="@drawable/ic_menu_book_black_24dp"

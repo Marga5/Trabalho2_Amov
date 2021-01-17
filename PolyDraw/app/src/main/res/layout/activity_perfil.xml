@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mail"
+        android:text="@string/tvEmail"
         android:layout_gravity="center"
         android:textSize="22sp"
         android:layout_marginTop="100dp"
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="@string/tvUsername"
         android:layout_gravity="center"
         android:textSize="22sp"
         android:layout_marginTop="50dp"
@@ -55,12 +55,13 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="user"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nº Jogos"
+        android:text="@string/tvNgames"
         android:layout_gravity="center"
         android:textSize="22sp"
         android:layout_marginTop="50dp"
@@ -79,7 +80,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vitórias"
+        android:text="@string/tvWin"
         android:layout_gravity="center"
         android:textSize="22sp"
         android:layout_marginTop="50dp"

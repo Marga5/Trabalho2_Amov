@@ -15,7 +15,7 @@ class EntrarActivity : AppCompatActivity() {
         finish()
     }
     fun onCriar(view: View) {
-        val intent = Intent (this, CriarActivity::class.java)
+        val intent = Intent (this, CriarEquipaActivity::class.java)
         startActivity(intent)
     }
     fun onJuntar(view: View) {

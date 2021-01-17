@@ -39,11 +39,11 @@ class   PerfilActivity : AppCompatActivity() {
 
 
         tvLog = findViewById(R.id.tvLog)
-        tfUser = findViewById(R.id.tfUser)
+        //tfUser = findViewById(R.id.tfUser)
 
 
         showUser(auth.currentUser)
-        ObservarFS()
+        //ObservarFS()
     }
 
     fun showUser(user : FirebaseUser?) {
@@ -70,10 +70,9 @@ class   PerfilActivity : AppCompatActivity() {
                 Log.i(TAG, "$username")
                 tfUser.setText("$username")
             }
+
         }
     }
-
-
 
     fun onVoltar(view: View) {
         finish()
