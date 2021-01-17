@@ -17,6 +17,8 @@
         android:theme="@style/Theme.PolyDraw">
         <activity android:name=".JuntaEquipaActivity" />
         <activity android:name=".CriarEquipaActivity" />
+        <activity android:name=".EsperaActivity"></activity>
+        <activity android:name=".CriarActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".EntrarActivity" />
         <activity android:name=".MenuActivity" />
