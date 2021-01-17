@@ -15,10 +15,11 @@ class EntrarActivity : AppCompatActivity() {
         finish()
     }
     fun onCriar(view: View) {
-        val intent = Intent (this, GameActivity::class.java)
+        val intent = Intent (this, CriarEquipaActivity::class.java)
         startActivity(intent)
     }
     fun onJuntar(view: View) {
-
+        val intent = Intent (this, JuntaEquipaActivity::class.java)
+        startActivity(intent)
     }
 }
