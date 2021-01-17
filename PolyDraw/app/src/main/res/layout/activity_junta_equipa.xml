@@ -52,7 +52,7 @@
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:onClick="onJuntar"
-        android:text="Juntar"
+        android:text="@string/btJoin"
         app:icon="@drawable/ic_play_arrow_black_24dp"
         android:layout_marginTop="200dp"
         />

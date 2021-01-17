@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
+        android:text="@string/tvWelcome"
         android:layout_gravity="center"
         android:textSize="25sp"
         android:layout_marginTop="10dp"/>
@@ -50,7 +50,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create your account!"
+        android:text="@string/tvCreateAccount"
         android:layout_gravity="center"
         android:textSize="15sp"
         />
@@ -66,7 +66,7 @@
         android:layout_marginTop="20sp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        android:hint="Username"
+        android:hint="@string/tvUsername"
         >
 
 
@@ -115,7 +115,7 @@
         app:endIconMode="password_toggle"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        android:hint="Password">
+        android:hint="@string/tvPassword">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onCriarComEmail"
-        android:text="Sign up"
+        android:text="@string/btSignup"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_edittext"
@@ -146,7 +146,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="------------- or sign up with -------------"
+        android:text="@string/tvOrSignUp"
         android:layout_gravity="center"/>
 
     <ImageButton

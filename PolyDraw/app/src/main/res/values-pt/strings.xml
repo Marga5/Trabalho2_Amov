@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PolyDraw</string>
+    <string name="tvLogin">Fazer login na conta!</string>
+    <string name="tvPassword">Palavra-passe</string>
+    <string name="btSignIn">Entrar</string>
+    <string name="tvOrSign">------------- ou entrar com -------------</string>
+    <string name="tvDontAccount">Não tem conta? Registe aqui</string>
+    <string name="tvWelcome">Bem vindo!</string>
+    <string name="tvCreateAccount">Crie a sua conta!</string>
+    <string name="tvUsername">Nome de Utilizador</string>
+    <string name="btSignup">Registar</string>
+    <string name="tvOrSignUp">------------- ou registe com -------------</string>
+    <string name="btStart">Começar</string>
+    <string name="btPerfil">Perfil</string>
+    <string name="btAbout">Sobre</string>
+    <string name="tvGroup">Grupo:</string>
+    <string name="tvNgames">Nº Jogos</string>
+    <string name="tvWin">Vitórias</string>
+    <string name="btJoin">Juntar</string>
+    <string name="tvTeamName">Nome da Equipa:</string>
+    <string name="tvMembers">Membros</string>
+    <string name="btPlay">Jogar</string>
+    <string name="btCreate">Criar</string>
+    <string name="tvLeader">Lider:</string>
+</resources>

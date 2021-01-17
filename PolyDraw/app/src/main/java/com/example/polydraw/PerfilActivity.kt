@@ -73,8 +73,6 @@ class   PerfilActivity : AppCompatActivity() {
         }
     }
 
-
-
     fun onVoltar(view: View) {
         finish()
     }

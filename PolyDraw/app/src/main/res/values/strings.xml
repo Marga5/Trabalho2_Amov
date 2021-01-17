@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">PolyDraw</string>
+    <string name="tvLogin">Login to your account!</string>
+    <string name="tvEmail" translatable="false">Email</string>
+    <string name="tvPassword">Password</string>
+    <string name="btSignIn">Sign in</string>
+    <string name="tvOrSign">------------- or sign in with -------------</string>
+    <string name="tvDontAccount">Don\'t have an account? Sign up here</string>
+    <string name="tvWelcome">Welcome!</string>
+    <string name="tvCreateAccount">Create your account!</string>
+    <string name="tvUsername">Username</string>
+    <string name="btSignup">Sign up</string>
+    <string name="tvOrSignUp">------------- or sign up with -------------</string>
+    <string name="btStart">Start</string>
+    <string name="btPerfil">Profile</string>
+    <string name="btAbout">About</string>
+    <string name="tvGroup">Group:</string>
+    <string name="tvNgames">Nº games</string>
+    <string name="tvWin">Victories</string>
+    <string name="btJoin">Join</string>
+    <string name="tvTeamName">Team Name:</string>
+    <string name="tvMembers">Members</string>
+    <string name="btPlay">Play</string>
+    <string name="btCreate">Create</string>
+    <string name="tvLeader">Leader:</string>
 </resources>

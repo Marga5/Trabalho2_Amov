@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    lateinit var tvLog : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
         //--------------------------
 
-        tvLog = findViewById(R.id.tvLog)
+
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -76,26 +75,15 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
     }
 
-    fun showUser(user : FirebaseUser?) {
-        val str = if (user==null) {
-            "No authenticated user"
-        } else {
-            "User: ${user.email}"
-        }
-        Snackbar.make(tvLog ,str, Snackbar.LENGTH_LONG).show()
-        tvLog.text = str
-    }
 
     fun signInWithEmail(email:String, password:String){
         auth.signInWithEmailAndPassword(email,  password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "signInWithEmail: success")
-                        showUser(auth.currentUser)
                         loginSucess()
                     } else {
                         Log.d(TAG, "signInWithEmail: failure")
-                        showUser(null)
                     }
                 }
 
@@ -137,12 +125,10 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "signInWithCredential:success")
-                        showUser(auth.currentUser)
                         Log.i(TAG, "firebaseAuthWithGoogle: ${auth.currentUser?.displayName}")
                         loginSucess()
                     } else {
                         Log.d(TAG, "signInWithCredential:failure")
-                        showUser(auth.currentUser)
                     }
                 }
 

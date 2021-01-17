@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login to your account!"
+        android:text="@string/tvLogin"
         android:layout_gravity="center"
         android:textSize="15sp"
         android:layout_marginTop="20dp"
@@ -45,7 +45,7 @@
         android:layout_marginTop="35sp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        android:hint="Email">
+        android:hint="@string/tvEmail">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -69,7 +69,7 @@
         app:endIconMode="password_toggle"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        android:hint="Password">
+        android:hint="@string/tvPassword">
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onLoginMail"
-        android:text="Sign in"
+        android:text="@string/btSignIn"
         android:layout_gravity="center"
         android:layout_marginTop="35dp"
         android:background="@drawable/rounded_edittext"
@@ -98,7 +98,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="------------- or sign in with -------------"
+        android:text="@string/tvOrSign"
         android:layout_gravity="center"/>
 
     <ImageButton
@@ -116,19 +116,9 @@
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign up here"
+        android:text="@string/tvDontAccount"
         android:layout_gravity="center"
         android:layout_marginTop="55dp"
         android:clickable="true"
         />
-
-    <TextView
-        android:id="@+id/tvLog"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        />
-
-
 </LinearLayout>
